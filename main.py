@@ -19,7 +19,7 @@ def main():
     os.chdir("Без процессов и потоков")
     for i in range(n):
         with open(f'{i + 1}_without.txt', 'w') as my_file:
-            time.sleep(0.5)
+            time.sleep(0.1)
     print("Файлы без потоков и процессов созданы")
 
     print("\nCоздание файлов c помощью потоков")
@@ -30,7 +30,7 @@ def main():
 
     def func_thread():
         with open(f'{i + 1}_thread.txt', 'w'):
-            time.sleep(0.5)
+            time.sleep(0.1)
 
     for i in range(n):
         thread = Thread(target=func_thread())
@@ -47,10 +47,12 @@ def main():
     def func_process():
         with open(f'{i + 1}_process.txt', 'w'):
             print()
+
     for i in range(n):
         process = Process(target=func_process(), args=(i,))
         process.start()
     print("Файлы процессами созданы")
+
 
 if __name__ == '__main__':
     main()
